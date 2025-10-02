@@ -1,0 +1,25 @@
+# --- Ignorer tous les environnements virtuels ---
+venv/
+env/
+my_env/
+**/venv/
+**/env/
+**/my_env/
+
+# --- Ignorer les fichiers Python compilés ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# --- Ignorer fichiers générés par IDE ---
+.vscode/
+.idea/
+
+# --- Fichiers système inutiles ---
+.DS_Store
+Thumbs.db
+
+# --- Fichiers générés (optionnel, si tu veux pas les partager) ---
+*.json
+*.csv
