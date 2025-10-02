@@ -1,0 +1,6 @@
+type,titre,auteur,isbn,taille_fichier
+Livre,Le problème à 3 corps,Liu Cixin,978-0765377067,
+LivreNumerique,1984,George Orwell,978-0451524935,2.5
+Livre,Harry potter,Jk Rowling,978-156013987,
+Livre,jsp,brother,978-015601987,
+Livre,monte cristo,je sais pas,978-056013987,

@@ -1,0 +1,36 @@
+{
+  "nom": "Municipale",
+  "livres": [
+    {
+      "type": "Livre",
+      "titre": "Le problème à 3 corps",
+      "auteur": "Liu Cixin",
+      "isbn": "978-0765377067"
+    },
+    {
+      "type": "LivreNumerique",
+      "titre": "1984",
+      "auteur": "George Orwell",
+      "isbn": "978-0451524935",
+      "taille_fichier": 2.5
+    },
+    {
+      "type": "Livre",
+      "titre": "Harry potter",
+      "auteur": "Jk Rowling",
+      "isbn": "978-156013987"
+    },
+    {
+      "type": "Livre",
+      "titre": "jsp",
+      "auteur": "brother",
+      "isbn": "978-015601987"
+    },
+    {
+      "type": "Livre",
+      "titre": "monte cristo",
+      "auteur": "je sais pas",
+      "isbn": "978-056013987"
+    }
+  ]
+}
