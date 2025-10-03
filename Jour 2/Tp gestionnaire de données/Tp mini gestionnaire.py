@@ -82,19 +82,19 @@ print(biblio)
 
 
 # Tp Jour 2
+def encode_livre(livre: Livre) -> dict:
+    d = {
+        "type": livre.__class__.__name__,
+        "titre": livre.titre,
+        "auteur": livre.auteur,
+        "isbn": livre.isbn,
+    }
+    if isinstance(livre, LivreNumerique):
+        d["taille_fichier"] = livre.taille_fichier
+    return d
+
+
 def biblio_to_dict(biblio: Bibliotheque) -> dict:
-    def encode_livre(livre: Livre) -> dict:
-        d = {
-            "type": livre.__class__.__name__,
-            "titre": livre.titre,
-            "auteur": livre.auteur,
-            "isbn": livre.isbn,
-        }
-
-        if isinstance(livre, LivreNumerique):
-            d["taille_fichier"] = livre.taille_fichier
-        return d
-
     return {
         "nom": biblio.nom,
         "livres": [encode_livre(l) for l in biblio.livres],

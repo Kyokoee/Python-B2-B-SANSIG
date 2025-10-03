@@ -1,0 +1,384 @@
+[1mdiff --git a/.gitignore b/.gitignore[m
+[1mindex e2f685f..7cadc24 100644[m
+[1m--- a/.gitignore[m
+[1m+++ b/.gitignore[m
+[36m@@ -20,6 +20,4 @@[m [m__pycache__/[m
+ .DS_Store[m
+ Thumbs.db[m
+ [m
+[31m-# --- Fichiers générés (optionnel, si tu veux pas les partager) ---[m
+[31m-*.json[m
+[31m-*.csv[m
+[41m+[m
+[1mdiff --git a/Exercice 1/data/data.json b/Exercice 1/data/data.json[m
+[1mdeleted file mode 100644[m
+[1mindex e69de29..0000000[m
+[1mdiff --git a/Exercice 1/src/calculs.py b/Exercice 1/src/calculs.py[m
+[1mdeleted file mode 100644[m
+[1mindex e69de29..0000000[m
+[1mdiff --git a/Exercice 1/src/main.py b/Exercice 1/src/main.py[m
+[1mdeleted file mode 100644[m
+[1mindex e69de29..0000000[m
+[1mdiff --git a/Exercice 1/tests/test_calc.py b/Exercice 1/tests/test_calc.py[m
+[1mdeleted file mode 100644[m
+[1mindex e69de29..0000000[m
+[1mdiff --git a/Exercice 2/BankAccount.py b/Exercice 2/BankAccount.py[m
+[1mdeleted file mode 100644[m
+[1mindex f5733f0..0000000[m
+[1m--- a/Exercice 2/BankAccount.py[m	
+[1m+++ /dev/null[m
+[36m@@ -1,35 +0,0 @@[m
+[31m-class BankAccount:[m
+[31m-    def __init__(self, titulaire: str, solde_initial: float = 0):[m
+[31m-        if solde_initial < 0:[m
+[31m-            raise ValueError("Le solde initial ne peut pas être négatif.")[m
+[31m-        self.titulaire = titulaire[m
+[31m-        self.solde = solde_initial[m
+[31m-        pass[m
+[31m-[m
+[31m-    def deposer(self, montant: float):[m
+[31m-        if montant <= 0:[m
+[31m-            raise ValueError("Le montant du dépôt doit être positif.")[m
+[31m-        self.solde += montant[m
+[31m-        return self.solde[m
+[31m-        pass[m
+[31m-[m
+[31m-    def retirer(self, montant: float):[m
+[31m-        if montant <= 0:[m
+[31m-            raise ValueError("Le montant du retrait doit être positif.")[m
+[31m-        if montant > self.solde:[m
+[31m-            raise ValueError("Fonds insuiffisants")[m
+[31m-        self.solde -= montant[m
+[31m-        return self.solde[m
+[31m-        pass[m
+[31m-[m
+[31m-    def __str__(self):[m
+[31m-        return f"Compte de {self.titulaire}, solde : {self.solde:.2f} €"[m
+[31m-[m
+[31m-[m
+[31m-if __name__ == "__main__":[m
+[31m-    compte = BankAccount("Clement", 500)[m
+[31m-    print(compte)[m
+[31m-    compte.deposer(50)[m
+[31m-    print(compte)[m
+[31m-    compte.retirer(100)[m
+[31m-    print(compte)[m
+[1mdiff --git a/Exercice 3/Heritage.py b/Exercice 3/Heritage.py[m
+[1mdeleted file mode 100644[m
+[1mindex f490de6..0000000[m
+[1m--- a/Exercice 3/Heritage.py[m	
+[1m+++ /dev/null[m
+[36m@@ -1,42 +0,0 @@[m
+[31m-class Vehicule:[m
+[31m-    def __init__(self, marque: str, modele: str):[m
+[31m-        self.marque = marque[m
+[31m-        self.modele = modele[m
+[31m-[m
+[31m-    def demarrer(self):[m
+[31m-        return f"{self.marque} {self.modele} démarre."[m
+[31m-[m
+[31m-    def __str__(self):[m
+[31m-        return f"Vehicule : {self.marque} {self.modele}"[m
+[31m-[m
+[31m-[m
+[31m-class Voiture(Vehicule):[m
+[31m-    def __init__(self, marque: str, modele: str, nb_portes: int):[m
+[31m-        super().__init__(marque, modele)[m
+[31m-        self.nb_portes = nb_portes[m
+[31m-[m
+[31m-    def __str__(self):[m
+[31m-        return f"Voiture : {self.marque} {self.modele}, {self.nb_portes} portes"[m
+[31m-[m
+[31m-[m
+[31m-class Moto(Vehicule):[m
+[31m-    def __init__(self, marque: str, modele: str, type_moteur: str):[m
+[31m-        super().__init__(marque, modele)[m
+[31m-        self.type_moteur = type_moteur[m
+[31m-[m
+[31m-    def __str__(self):[m
+[31m-        return f"Moto : {self.marque} {self.modele}, moteur {self.type_moteur}"[m
+[31m-[m
+[31m-[m
+[31m-if __name__ == "__main__":[m
+[31m-    vehicule = Vehicule("Generique", "Modele")[m
+[31m-    print(vehicule)[m
+[31m-    print(vehicule.demarrer())[m
+[31m-[m
+[31m-    voiture = Voiture("Peugeot", "2008", 5)[m
+[31m-    print(voiture)[m
+[31m-    print(voiture.demarrer())[m
+[31m-[m
+[31m-    moto = Moto("Yamaha", "R6", "4-temps")[m
+[31m-    print(moto)[m
+[31m-    print(moto.demarrer())[m
+[1mdiff --git a/README.md b/README.md[m
+[1mindex 663d98e..cd02bb4 100644[m
+[1m--- a/README.md[m
+[1m+++ b/README.md[m
+[36m@@ -1 +1,8 @@[m
+[31m-salut[m
+\ No newline at end of file[m
+[32m+[m[32mBonjour, j'ai organisé les exercices et tp par Jours :[m[41m [m
+[32m+[m
+[32m+[m[32mJOUR 1 : Tous les exos et le premier tp Bibliotheque[m[41m [m
+[32m+[m
+[32m+[m[32mJOUR 2 : Exercice et tp gestionnaire de données sur la base du tp de la veille[m[41m [m
+[32m+[m
+[32m+[m[32mJOUR 3 : Le tp bibliotheque avec la classe ErreurBibliotheque et la mise en place de gestion d'erreurs sur la partie gestion de fichiers avec un test demo[m[41m [m
+[32m+[m[32mAinsi qu'un dossier SplitBiblio dans lequel j'ai split mon projet en 4 fichiers python comme demandé. (J'ai gardé le tp en un bloc et j'ai donc créé un autre fichier pour la partie split.)[m
+\ No newline at end of file[m
+[1mdiff --git "a/Tp biblioth\303\250que/Biblio.py" "b/Tp biblioth\303\250que/Biblio.py"[m
+[1mdeleted file mode 100644[m
+[1mindex f6eeae4..0000000[m
+[1m--- "a/Tp biblioth\303\250que/Biblio.py"[m	
+[1m+++ /dev/null[m
+[36m@@ -1,70 +0,0 @@[m
+[31m-class Livre:[m
+[31m-    def __init__(self, titre: str, auteur: str, isbn: str):[m
+[31m-        self.titre = titre[m
+[31m-        self.auteur = auteur[m
+[31m-        self.isbn = isbn[m
+[31m-[m
+[31m-    def __str__(self):[m
+[31m-        return f"'{self.titre}' écrit par {self.auteur} (ISBN: {self.isbn})"[m
+[31m-[m
+[31m-[m
+[31m-class LivreNumerique(Livre):[m
+[31m-    def __init__(self, titre: str, auteur: str, isbn: str, taille_fichier: float):[m
+[31m-        super().__init__(titre, auteur, isbn)[m
+[31m-        self.taille_fichier = taille_fichier[m
+[31m-        pass[m
+[31m-[m
+[31m-    def __str__(self):[m
+[31m-        return ([m
+[31m-            f"'{self.titre}' écrit par {self.auteur} "[m
+[31m-            f"(ISBN: {self.isbn}, fichier : {self.taille_fichier} Mo)"[m
+[31m-        )[m
+[31m-[m
+[31m-[m
+[31m-class Bibliotheque:[m
+[31m-    def __init__(self, nom: str):[m
+[31m-        self.nom = nom[m
+[31m-        self.livres = [][m
+[31m-[m
+[31m-    def ajouter_livre(self, livre: Livre):[m
+[31m-        self.livres.append(livre)[m
+[31m-[m
+[31m-    def supprimer_livre(self, isbn: str):[m
+[31m-        self.livres = [livre for livre in self.livres if livre.isbn != isbn][m
+[31m-[m
+[31m-    def rechercher_par_titre(self, titre: str):[m
+[31m-        return [livre for livre in self.livres if titre.lower() in livre.titre.lower()][m
+[31m-[m
+[31m-    def rechercher_par_auteur(self, auteur: str):[m
+[31m-        return [[m
+[31m-            livre for livre in self.livres if auteur.lower() in livre.auteur.lower()[m
+[31m-        ][m
+[31m-[m
+[31m-    def __str__(self):[m
+[31m-        return f"Bibliothèque '{self.nom}' avec {len(self.livres)} livre(s)."[m
+[31m-[m
+[31m-[m
+[31m-if __name__ == "__main__":[m
+[31m-    biblio = Bibliotheque("Municipale")[m
+[31m-[m
+[31m-livre1 = Livre("Le problème à 3 corps", "Liu Cixin", "978-0765377067")[m
+[31m-ebook = LivreNumerique("1984", "George Orwell", "978-0451524935", 2.5)[m
+[31m-livre2 = Livre("Le petit prince", "Antoine de St-Exupery", "978-0156013987")[m
+[31m-[m
+[31m-biblio.ajouter_livre(livre1)[m
+[31m-biblio.ajouter_livre(ebook)[m
+[31m-biblio.ajouter_livre(livre2)[m
+[31m-[m
+[31m-print(biblio)[m
+[31m-[m
+[31m-print("Recherche par titre '1984':")[m
+[31m-for livre in biblio.rechercher_par_titre("1984"):[m
+[31m-    print(" ", livre)[m
+[31m-[m
+[31m-print("Recherche par auteur 'Liu Cixin':")[m
+[31m-for livre in biblio.rechercher_par_auteur("Liu Cixin"):[m
+[31m-    print(" ", livre)[m
+[31m-[m
+[31m-biblio.supprimer_livre("978-0156013987")[m
+[31m-print("Le livre a bien été supprimé")[m
+[31m-print(biblio)[m
+[1mdiff --git "a/Tp gestionnaire de donn\303\251es/Tp mini gestionnaire.py" "b/Tp gestionnaire de donn\303\251es/Tp mini gestionnaire.py"[m
+[1mdeleted file mode 100644[m
+[1mindex 421aaf9..0000000[m
+[1m--- "a/Tp gestionnaire de donn\303\251es/Tp mini gestionnaire.py"[m	
+[1m+++ /dev/null[m
+[36m@@ -1,173 +0,0 @@[m
+[31m-import json[m
+[31m-import csv[m
+[31m-[m
+[31m-[m
+[31m-class Livre:[m
+[31m-    def __init__(self, titre: str, auteur: str, isbn: str):[m
+[31m-        self.titre = titre[m
+[31m-        self.auteur = auteur[m
+[31m-        self.isbn = isbn[m
+[31m-[m
+[31m-    def __str__(self):[m
+[31m-        return f"'{self.titre}' écrit par {self.auteur} (ISBN: {self.isbn})"[m
+[31m-[m
+[31m-[m
+[31m-class LivreNumerique(Livre):[m
+[31m-    def __init__(self, titre: str, auteur: str, isbn: str, taille_fichier: float):[m
+[31m-        super().__init__(titre, auteur, isbn)[m
+[31m-        self.taille_fichier = taille_fichier[m
+[31m-        pass[m
+[31m-[m
+[31m-    def __str__(self):[m
+[31m-        return ([m
+[31m-            f"'{self.titre}' écrit par {self.auteur} "[m
+[31m-            f"(ISBN: {self.isbn}, fichier : {self.taille_fichier} Mo)"[m
+[31m-        )[m
+[31m-[m
+[31m-[m
+[31m-class Bibliotheque:[m
+[31m-    def __init__(self, nom: str):[m
+[31m-        self.nom = nom[m
+[31m-        self.livres = [][m
+[31m-[m
+[31m-    def ajouter_livre(self, livre: Livre):[m
+[31m-        self.livres.append(livre)[m
+[31m-[m
+[31m-    def supprimer_livre(self, isbn: str):[m
+[31m-        self.livres = [livre for livre in self.livres if livre.isbn != isbn][m
+[31m-[m
+[31m-    def rechercher_par_titre(self, titre: str):[m
+[31m-        return [livre for livre in self.livres if titre.lower() in livre.titre.lower()][m
+[31m-[m
+[31m-    def rechercher_par_auteur(self, auteur: str):[m
+[31m-        return [[m
+[31m-            livre for livre in self.livres if auteur.lower() in livre.auteur.lower()[m
+[31m-        ][m
+[31m-[m
+[31m-    def __str__(self):[m
+[31m-        return f"Bibliothèque '{self.nom}' avec {len(self.livres)} livre(s)."[m
+[31m-[m
+[31m-[m
+[31m-if __name__ == "__main__":[m
+[31m-    biblio = Bibliotheque("Municipale")[m
+[31m-[m
+[31m-livre1 = Livre("Le problème à 3 corps", "Liu Cixin", "978-0765377067")[m
+[31m-ebook = LivreNumerique("1984", "George Orwell", "978-0451524935", 2.5)[m
+[31m-livre2 = Livre("Le petit prince", "Antoine de St-Exupery", "978-0156013987")[m
+[31m-livre3 = Livre("Harry potter", "Jk Rowling", "978-156013987")[m
+[31m-livre4 = Livre("jsp", "brother", "978-015601987")[m
+[31m-livre5 = Livre("monte cristo", "je sais pas", "978-056013987")[m
+[31m-[m
+[31m-[m
+[31m-biblio.ajouter_livre(livre1)[m
+[31m-biblio.ajouter_livre(ebook)[m
+[31m-biblio.ajouter_livre(livre2)[m
+[31m-biblio.ajouter_livre(livre3)[m
+[31m-biblio.ajouter_livre(livre4)[m
+[31m-biblio.ajouter_livre(livre5)[m
+[31m-[m
+[31m-print(biblio)[m
+[31m-[m
+[31m-print("Recherche par titre '1984':")[m
+[31m-for livre in biblio.rechercher_par_titre("1984"):[m
+[31m-    print(" ", livre)[m
+[31m-[m
+[31m-print("Recherche par auteur 'Liu Cixin':")[m
+[31m-for livre in biblio.rechercher_par_auteur("Liu Cixin"):[m
+[31m-    print(" ", livre)[m
+[31m-[m
+[31m-biblio.supprimer_livre("978-0156013987")[m
+[31m-print("Le livre a bien été supprimé")[m
+[31m-print(biblio)[m
+[31m-[m
+[31m-[m
+[31m-# Tp Jour 2[m
+[31m-def biblio_to_dict(biblio: Bibliotheque) -> dict:[m
+[31m-    def encode_livre(livre: Livre) -> dict:[m
+[31m-        d = {[m
+[31m-            "type": livre.__class__.__name__,[m
+[31m-            "titre": livre.titre,[m
+[31m-            "auteur": livre.auteur,[m
+[31m-            "isbn": livre.isbn,[m
+[31m-        }[m
+[31m-[m
+[31m-        if isinstance(livre, LivreNumerique):[m
+[31m-            d["taille_fichier"] = livre.taille_fichier[m
+[31m-        return d[m
+[31m-[m
+[31m-    return {[m
+[31m-        "nom": biblio.nom,[m
+[31m-        "livres": [encode_livre(l) for l in biblio.livres],[m
+[31m-    }[m
+[31m-[m
+[31m-[m
+[31m-def dict_to_biblio(data: dict) -> Bibliotheque:[m
+[31m-    b = Bibliotheque(data.get("nom", "SansNom"))[m
+[31m-    for item in data.get("livres", []):[m
+[31m-        typ = item.get("type", "Livre")[m
+[31m-        if typ == "LivreNumerique":[m
+[31m-            l = LivreNumerique([m
+[31m-                item["titre"],[m
+[31m-                item["auteur"],[m
+[31m-                item["isbn"],[m
+[31m-                item.get("taille_fichier", 0.0),[m
+[31m-            )[m
+[31m-        else:[m
+[31m-            l = Livre(item["titre"], item["auteur"], item["isbn"])[m
+[31m-        b.ajouter_livre(l)[m
+[31m-    return b[m
+[31m-[m
+[31m-[m
+[31m-def save_biblio_json(biblio: Bibliotheque, path: str = "catalogue.json") -> None:[m
+[31m-    data = biblio_to_dict(biblio)[m
+[31m-    with open(path, "w", encoding="utf-8") as f:[m
+[31m-        json.dump(data, f, ensure_ascii=False, indent=2)[m
+[31m-[m
+[31m-[m
+[31m-def load_biblio_json(path: str = "catalogue.json") -> Bibliotheque:[m
+[31m-    with open(path, "r", encoding="utf-8") as f:[m
+[31m-        data = json.load(f)[m
+[31m-    return dict_to_biblio(data)[m
+[31m-[m
+[31m-[m
+[31m-def export_biblio_csv(biblio: Bibliotheque, path: str = "catalogue.csv") -> None:[m
+[31m-    fieldnames = ["type", "titre", "auteur", "isbn", "taille_fichier"][m
+[31m-    with open(path, "w", newline="", encoding="utf-8") as f:[m
+[31m-        writer = csv.DictWriter(f, fieldnames=fieldnames)[m
+[31m-        writer.writeheader()[m
+[31m-        for l in biblio.livres:[m
+[31m-            row = {[m
+[31m-                "type": l.__class__.__name__,[m
+[31m-                "titre": l.titre,[m
+[31m-                "auteur": l.auteur,[m
+[31m-                "isbn": l.isbn,[m
+[31m-                "taille_fichier": getattr(l, "taille_fichier", ""),[m
+[31m-            }[m
+[31m-            writer.writerow(row)[m
+[31m-[m
+[31m-[m
+[31m-if __name__ == "__main__":[m
+[31m-    try:[m
+[31m-        save_biblio_json(biblio, "catalogue.json")[m
+[31m-        print("Sauvegarde JSON : catalogue.json")[m
+[31m-    except (OSError, TypeError, ValueError) as e:[m
+[31m-        print("Erreur lors de la sauvegarde JSON :", e)[m
+[31m-[m
+[31m-    try:[m
+[31m-        b2 = load_biblio_json("catalogue.json")[m
+[31m-        print("Chargement JSON OK :", b2)[m
+[31m-    except FileNotFoundError:[m
+[31m-        print("Fichier JSON introuvable (catalogue.json).")[m
+[31m-    except (OSError, json.JSONDecodeError) as e:[m
+[31m-        print("Erreur de lecture/décodage JSON :", e)[m
+[31m-[m
+[31m-    try:[m
+[31m-        export_biblio_csv(biblio, "catalogue.csv")[m
+[31m-        print("Export CSV : catalogue.csv")[m
+[31m-    except OSError as e:[m
+[31m-        print("Erreur lors de l'export CSV :", e)[m
+[31m-[m
+[31m-    try:[m
+[31m-        _ = load_biblio_json("fichier_qui_n_existe_pas.json")[m
+[31m-    except FileNotFoundError:[m
+[31m-        print("Exemple : fichier JSON manquant bien intercepté.")[m

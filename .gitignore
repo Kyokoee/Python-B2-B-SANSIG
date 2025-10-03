@@ -20,6 +20,4 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# --- Fichiers générés (optionnel, si tu veux pas les partager) ---
-*.json
-*.csv
+

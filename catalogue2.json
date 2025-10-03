@@ -1,0 +1,11 @@
+{
+  "nom": "Test",
+  "livres": [
+    {
+      "type": "Livre",
+      "titre": "Titre test",
+      "auteur": "Auteur test",
+      "isbn": "000"
+    }
+  ]
+}
