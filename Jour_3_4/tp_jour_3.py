@@ -50,34 +50,33 @@ class Bibliotheque:
 if __name__ == "__main__":
     biblio = Bibliotheque("Municipale")
 
-livre1 = Livre("Le problème à 3 corps", "Liu Cixin", "978-0765377067")
-ebook = LivreNumerique("1984", "George Orwell", "978-0451524935", 2.5)
-livre2 = Livre("Le petit prince", "Antoine de St-Exupery", "978-0156013987")
-livre3 = Livre("Harry potter", "Jk Rowling", "978-156013987")
-livre4 = Livre("jsp", "brother", "978-015601987")
-livre5 = Livre("monte cristo", "je sais pas", "978-056013987")
+    livre1 = Livre("Le problème à 3 corps", "Liu Cixin", "978-0765377067")
+    ebook = LivreNumerique("1984", "George Orwell", "978-0451524935", 2.5)
+    livre2 = Livre("Le petit prince", "Antoine de St-Exupery", "978-0156013987")
+    livre3 = Livre("Harry potter", "Jk Rowling", "978-156013987")
+    livre4 = Livre("jsp", "brother", "978-015601987")
+    livre5 = Livre("monte cristo", "je sais pas", "978-056013987")
 
+    biblio.ajouter_livre(livre1)
+    biblio.ajouter_livre(ebook)
+    biblio.ajouter_livre(livre2)
+    biblio.ajouter_livre(livre3)
+    biblio.ajouter_livre(livre4)
+    biblio.ajouter_livre(livre5)
 
-biblio.ajouter_livre(livre1)
-biblio.ajouter_livre(ebook)
-biblio.ajouter_livre(livre2)
-biblio.ajouter_livre(livre3)
-biblio.ajouter_livre(livre4)
-biblio.ajouter_livre(livre5)
+    print(biblio)
 
-print(biblio)
+    print("Recherche par titre '1984':")
+    for livre in biblio.rechercher_par_titre("1984"):
+        print(" ", livre)
 
-print("Recherche par titre '1984':")
-for livre in biblio.rechercher_par_titre("1984"):
-    print(" ", livre)
+    print("Recherche par auteur 'Liu Cixin':")
+    for livre in biblio.rechercher_par_auteur("Liu Cixin"):
+        print(" ", livre)
 
-print("Recherche par auteur 'Liu Cixin':")
-for livre in biblio.rechercher_par_auteur("Liu Cixin"):
-    print(" ", livre)
-
-biblio.supprimer_livre("978-0156013987")
-print("Le livre a bien été supprimé")
-print(biblio)
+    biblio.supprimer_livre("978-0156013987")
+    print("Le livre a bien été supprimé")
+    print(biblio)
 
 
 # Tp Jour 2
@@ -269,8 +268,11 @@ def demo_safe_wrappers():
         print("Fichier manquant bien intercepté (safe load):", e)
 
 
-def demo_sous_classe():
-    print("\n--- DEMO: sous-classe BibliothequeAvecFichier ---")
+if __name__ == "__main__":
+
+    def demo_sous_classe():
+        print("\n--- DEMO: sous-classe BibliothequeAvecFichier ---")
+
     b = BibliothequeAvecFichier("Test")
     b.ajouter_livre(Livre("Titre test", "Auteur test", "000"))
     try:
