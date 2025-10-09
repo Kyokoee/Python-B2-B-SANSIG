@@ -1,6 +1,7 @@
 import json
 import csv
 import pytest
+import tp_jour_3 as tp
 
 from tp_jour_3 import (
     Livre,
@@ -99,8 +100,8 @@ def test_json_safe_ok(tmp_path):
     b = Bibliotheque("SafeOK")
     b.ajouter_livre(Livre("X", "Y", "9"))
     p = tmp_path / "ok.json"
-    save_biblio_json_safe(b, str(p))  # ne doit pas lever
-    b2 = load_biblio_json_safe(str(p))  # ne doit pas lever
+    save_biblio_json_safe(b, str(p))
+    b2 = load_biblio_json_safe(str(p))
     assert b2.nom == "SafeOK" and len(b2.livres) == 1
 
 
@@ -108,5 +109,41 @@ def test_csv_safe_ok(tmp_path):
     b = Bibliotheque("CSVOK")
     b.ajouter_livre(Livre("A", "B", "1"))
     p = tmp_path / "ok.csv"
-    export_biblio_csv_safe(b, str(p))  # ne doit pas lever
+    export_biblio_csv_safe(b, str(p))
     assert p.exists() and p.read_text(encoding="utf-8").strip() != ""
+
+
+def test_json_roundtrip_minimal(tmp_path):
+    b = tp.Bibliotheque("B")
+    b.ajouter_livre(tp.Livre("Dune", "Herbert", "111"))
+    p = tmp_path / "biblio.json"
+
+    tp.save_biblio_json_safe(b, p)
+    b2 = tp.load_biblio_json_safe(p)
+
+    assert any(l.isbn == "111" for l in b2.livres)
+
+
+def test_json_charge_liste_vide(tmp_path):
+    p = tmp_path / "empty.json"
+    p.write_text(json.dumps({"livres": []}, ensure_ascii=False), encoding="utf-8")
+    b = tp.load_biblio_json_safe(p)
+    assert hasattr(b, "livres") and len(b.livres) == 0
+
+
+def test_export_csv_et_lecture_headers(tmp_path):
+    b = tp.Bibliotheque("B")
+    b.ajouter_livre(tp.Livre("Dune", "Herbert", "111"))
+    if hasattr(tp, "LivreNumerique"):
+        b.ajouter_livre(tp.LivreNumerique("Ebook", "AA", "222", 2.5))
+
+    p = tmp_path / "biblio.csv"
+    tp.export_biblio_csv_safe(b, p)
+
+    with p.open("r", encoding="utf-8", newline="") as f:
+        reader = csv.reader(f)
+        rows = list(reader)
+
+    headers = [h.strip().lower() for h in rows[0]]
+    assert "titre" in headers and "auteur" in headers and "isbn" in headers
+    assert len(rows) >= 2
